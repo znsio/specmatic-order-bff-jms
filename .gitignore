@@ -1,0 +1,12 @@
+target/*
+.DS_Store
+lib/*
+*.iml
+build/*
+.idea/*
+.gradle/*
+.qontract
+js/node_modules
+/kafka-logs/
+/.specmatic/
+activemq-data
