@@ -17,7 +17,7 @@ Here is the [AsyncAPI spec](https://github.com/znsio/specmatic-order-contracts/b
 ## Background
 A typical web application might look like this. We can use Specmatic to practice contract-driven development and test all the components mentioned below. In this sample project, we look at how to do this for nodejs BFF which is dependent on Domain API Service and JMS demonstrating both OpenAPI and AsyncAPI support in specmatic.
 
-![HTML client talks to client API which talks to backend API](assets/specmatic-order-bff-architecture.gif)
+![HTML client talks to client API which talks to backend API](assets/specmatic-order-bff-jms-architecture.gif)
 
 ## Tech
 1. Spring boot
