@@ -7,19 +7,21 @@ import `in`.specmatic.jms.mock.models.Expectation
 import `in`.specmatic.stub.ContractStub
 import `in`.specmatic.stub.createStub
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.*
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ConfigurableApplicationContext
 
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class APITests {
     @Karate.Test
+    @Order(1)
     fun apiTests(): Karate {
         return Karate().path("apiTests.feature").relativeTo(this::class.java)
     }
 
     @Test
+    @Order(2)
     fun `test expectations set on the jms mock are met`() {
         jmsMock.awaitMessages(3)
         val result = jmsMock.verifyExpectations()
