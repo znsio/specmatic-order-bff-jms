@@ -33,14 +33,13 @@ class ContractTests: SpecmaticJUnitSupport() {
             System.setProperty("port", SPECMATIC_TEST_PORT)
             System.setProperty("endpointsAPI", ACTUTATOR_MAPPINGS_ENDPOINT)
 
-            stub = createStub(SPECMATIC_STUB_HOST, SPECMATIC_STUB_PORT)
-
-            val expectationJsonString = File("./src/test/resources/expectation.json").readText()
-            stub.setExpectation(expectationJsonString)
-
             jmsMock = JmsMock.create()
             jmsMock.start()
             jmsMock.setExpectations(listOf(Expectation("product-queries", 3)))
+
+            stub = createStub(SPECMATIC_STUB_HOST, SPECMATIC_STUB_PORT)
+            val expectationJsonString = File("./src/test/resources/expectation.json").readText()
+            stub.setExpectation(expectationJsonString)
 
             val springApp = SpringApplication(Application::class.java)
             context = springApp.run()
