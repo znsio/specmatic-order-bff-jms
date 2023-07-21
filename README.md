@@ -3,7 +3,9 @@
 * [Specmatic Website](https://specmatic.in)
 * [Specmatic Documenation](https://specmatic.in/documentation.html)
 
-This sample project demonstrates how we can practice contract-driven development and contract testing in a SpringBoot (Kotlin) application that depends on an external domain service and JMS. Here, Specmatic is used to stub calls to domain API service based on its OpenAPI spec and mock JMS based on its AsyncAPI spec.
+This sample project demonstrates how we can practice contract-driven development and contract testing in a SpringBoot (Kotlin) application that depends on an external domain service and JMS.  
+Here, Specmatic is used to stub calls to domain API service based on its OpenAPI spec and mock JMS based on its AsyncAPI spec.  
+Please contact us at https://specmatic.in if you wish to try it out.
 
 Here is the domain api [contract/open api spec](https://github.com/znsio/specmatic-order-contracts/blob/main/in/specmatic/examples/store/api_order_v1.yaml)
 
