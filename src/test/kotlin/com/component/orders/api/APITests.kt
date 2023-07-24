@@ -29,10 +29,10 @@ class APITests {
 
     @Test
     fun `test product search api returns a list of products`() {
+        jmsMock.setExpectations(listOf(Expectation(productQueries, 3)))
+
         val expectationJsonString = File("./src/test/resources/expectation_for_search_products_api.json").readText()
         stub.setExpectation(expectationJsonString)
-
-        jmsMock.setExpectations(listOf(Expectation(queueName, 3)))
 
         val response = RestTemplate().getForEntity(searchProductsApiUrl, List::class.java)
         assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
@@ -59,9 +59,9 @@ class APITests {
         assertThat(result.success).isTrue
         assertThat(result.errors).isEmpty()
 
-        assertThat(jmsMock.objectMessageReceivedOnChannel(queueName, ProductMessage(1, "Iphone", 10))).isTrue
-        assertThat(jmsMock.objectMessageReceivedOnChannel(queueName, ProductMessage(2, "Macbook", 40))).isTrue
-        assertThat(jmsMock.objectMessageReceivedOnChannel(queueName, ProductMessage(31, "Ipad", 20))).isTrue
+        assertThat(jmsMock.objectMessageReceivedOnChannel(productQueries, ProductMessage(1, "Iphone", 10))).isTrue
+        assertThat(jmsMock.objectMessageReceivedOnChannel(productQueries, ProductMessage(2, "Macbook", 40))).isTrue
+        assertThat(jmsMock.objectMessageReceivedOnChannel(productQueries, ProductMessage(31, "Ipad", 20))).isTrue
     }
 
     @Test
@@ -91,7 +91,7 @@ class APITests {
         private lateinit var jmsMock: JmsMock
         private const val SPECMATIC_STUB_HOST = "localhost"
         private const val SPECMATIC_STUB_PORT = 9000
-        private const val queueName = "product-queries"
+        private const val productQueries = "product-queries"
         private const val searchProductsApiUrl = "http://localhost:8080/findAvailableProducts?type=gadget"
         private const val orderApiUrl = "http://localhost:8080/orders"
 
