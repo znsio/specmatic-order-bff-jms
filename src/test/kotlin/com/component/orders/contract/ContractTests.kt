@@ -9,7 +9,6 @@ import `in`.specmatic.test.SpecmaticJUnitSupport
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ConfigurableApplicationContext
 import java.io.File
@@ -38,7 +37,7 @@ class ContractTests: SpecmaticJUnitSupport() {
             jmsMock.setExpectations(listOf(Expectation("product-queries", 3)))
 
             stub = createStub(SPECMATIC_STUB_HOST, SPECMATIC_STUB_PORT)
-            val expectationJsonString = File("./src/test/resources/expectation.json").readText()
+            val expectationJsonString = File("./src/test/resources/expectation_for_search_products_api.json").readText()
             stub.setExpectation(expectationJsonString)
 
             val springApp = SpringApplication(Application::class.java)
@@ -48,18 +47,15 @@ class ContractTests: SpecmaticJUnitSupport() {
         @JvmStatic
         @AfterAll
         fun tearDown() {
+            jmsMock.awaitMessages(3)
+            val result = jmsMock.verifyExpectations()
+            assertThat(result.success).isTrue
+            assertThat(result.errors).isEmpty()
+
             context!!.close()
             stub.close()
             jmsMock.stop()
         }
-    }
-
-    @Test
-    fun `test expectations set on the jms mock are met`() {
-        jmsMock.awaitMessages(3)
-        val result = jmsMock.verifyExpectations()
-        assertThat(result.success).isTrue
-        assertThat(result.errors).isEmpty()
     }
 }
 

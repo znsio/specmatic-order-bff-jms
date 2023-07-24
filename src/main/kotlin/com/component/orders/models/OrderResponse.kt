@@ -1,3 +1,11 @@
 package com.component.orders.models
 
-data class OrderResponse(val id: Int, val status: String)
+import com.fasterxml.jackson.annotation.JsonProperty
+
+data class OrderResponse(
+    @JsonProperty("id")
+    val id: Int,
+
+    @JsonProperty("status")
+    val status: String
+)

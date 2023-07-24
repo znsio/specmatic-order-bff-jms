@@ -1,0 +1,13 @@
+{
+  "http-request": {
+    "method": "GET",
+    "path": "/products",
+    "query": {
+      "type": "gadget"
+    }
+  },
+  "http-response": {
+    "status": 500,
+    "body": ""
+  }
+}
