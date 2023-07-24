@@ -32,6 +32,8 @@ class APITests {
         val expectationJsonString = File("./src/test/resources/expectation_for_search_products_api.json").readText()
         stub.setExpectation(expectationJsonString)
 
+        jmsMock.setExpectations(listOf(Expectation(queueName, 3)))
+
         val response = RestTemplate().getForEntity(searchProductsApiUrl, List::class.java)
         assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
         val productList = response.body.map {
@@ -98,7 +100,6 @@ class APITests {
         fun setUp() {
             jmsMock = JmsMock.create()
             jmsMock.start()
-            jmsMock.setExpectations(listOf(Expectation(queueName, 3)))
 
             service = SpringApplication.run(Application::class.java)
         }
