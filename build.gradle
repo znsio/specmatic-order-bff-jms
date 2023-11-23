@@ -44,14 +44,14 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.2.4.RELEASE'
 
-    implementation('in.specmatic:specmatic-core:0.81.0') {
+    implementation('in.specmatic:specmatic-core:1.0.2') {
         exclude group: 'org.apache.kafka', module: 'kafka-clients'
     }
-    implementation('in.specmatic:junit5-support:0.81.0') {
+    implementation('in.specmatic:junit5-support:1.0.2') {
         exclude group: 'org.apache.kafka', module: 'kafka-clients'
     }
 
-    implementation 'in.specmatic:specmatic-jms:0.1.0'
+    implementation 'in.specmatic:specmatic-jms:0.3.0'
 
     implementation ('org.springframework.boot:spring-boot-starter-activemq:2.7.8') {
         exclude group: 'org.springframework.boot'
