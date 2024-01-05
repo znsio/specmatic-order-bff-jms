@@ -24,7 +24,7 @@ repositories {
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -44,14 +44,14 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.2.4.RELEASE'
 
-    implementation('in.specmatic:specmatic-core:1.0.2') {
+    implementation('in.specmatic:specmatic-core:1.2.2') {
         exclude group: 'org.apache.kafka', module: 'kafka-clients'
     }
-    implementation('in.specmatic:junit5-support:1.0.2') {
+    implementation('in.specmatic:junit5-support:1.2.2') {
         exclude group: 'org.apache.kafka', module: 'kafka-clients'
     }
 
-    implementation 'in.specmatic:specmatic-jms:0.3.0'
+    implementation 'in.specmatic:specmatic-jms:0.4.0'
 
     implementation ('org.springframework.boot:spring-boot-starter-activemq:2.7.8') {
         exclude group: 'org.springframework.boot'
@@ -85,7 +85,7 @@ test {
 
 group = 'in.specmatic.sample'
 version = '1.0'
-sourceCompatibility = '1.8'
+sourceCompatibility = '17'
 
 configurations {
 
