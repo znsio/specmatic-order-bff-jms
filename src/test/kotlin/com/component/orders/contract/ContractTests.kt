@@ -1,11 +1,11 @@
 package com.component.orders.contract
 
 import com.component.orders.Application
-import `in`.specmatic.jms.mock.JmsMock
-import `in`.specmatic.jms.mock.models.Expectation
-import `in`.specmatic.stub.ContractStub
-import `in`.specmatic.stub.createStub
-import `in`.specmatic.test.SpecmaticJUnitSupport
+import io.specmatic.jms.mock.JmsMock
+import io.specmatic.jms.mock.models.Expectation
+import io.specmatic.stub.ContractStub
+import io.specmatic.stub.createStub
+import io.specmatic.test.SpecmaticJUnitSupport
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
